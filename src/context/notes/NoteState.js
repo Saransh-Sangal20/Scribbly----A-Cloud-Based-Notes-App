@@ -50,14 +50,14 @@ const NoteState = (props) => {
         }
     ]
 
-    // add Note function
+    // add note function
     const addNote = (title, description, tag) => {
-        let note = {
+        const note = {
             "_id": "68d77b521f9dia16d0c65fba0",
             "user": "68d57ff74bdd292847919651",
-            "title": "A New Day [added]",
-            "description": "Wakeup for a new morning [added]",
-            "tag": "reminder",
+            "title": title,
+            "description": description,
+            "tag": tag,
             "date": "2025-09-27T05:51:14.582Z",
             "__v": 0
         }
