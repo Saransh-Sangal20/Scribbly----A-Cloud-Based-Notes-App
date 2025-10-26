@@ -22,7 +22,7 @@ export default function AddNote() {
                 <form>
                     <div className="mb-3">
                         <label htmlFor="title" className="form-label">Title</label>
-                        <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={handleChange} />
+                        <input type="text" className="form-control" id="title" name="title" onChange={handleChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="description" className="form-label">Description</label>
