@@ -7,7 +7,7 @@ import AddNote from './AddNote';
 export default function Notes() {
     const context = useContext(noteContext);
     const { notes, getNotes, editNote } = context;
-    const [note, setnote] = useState({etitle: "", edescription: "", etag: ""});  // initially each field of each note is empty
+    const [note, setnote] = useState({id: "", etitle: "", edescription: "", etag: ""});  // initially each field of each note is empty
 
     useEffect(() => {
         getNotes();
@@ -18,12 +18,13 @@ export default function Notes() {
     const refClose = useRef(null);
     const updatenote = (currentNote) => {
         refbtn.current.click();  // programmatically clicking the button to open the modal
-        setnote({etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag});
+        setnote({id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag});
     }
 
     const handleUpdateNote = (e) => {
         e.preventDefault();  // to prevent the default behaviour of form submission which reloads the page
         console.log(note);
+        editNote(note.id, note.etitle, note.edescription, note.etag);
         refClose.current.click();  // programmatically clicking the close button to close the modal
     }
 
@@ -37,7 +38,7 @@ export default function Notes() {
             <button type="button" ref={refbtn} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

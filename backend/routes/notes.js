@@ -68,7 +68,7 @@ router.put('/updatenote/:id', fetchUser, async (req, res) => {
     }
     catch (error) {
         console.log(error.message);
-        res.status(500).send("Some error occured");
+        res.status(500).json({ error: "Some error occured" });
     }
 })
 

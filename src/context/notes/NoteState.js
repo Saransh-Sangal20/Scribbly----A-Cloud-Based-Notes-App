@@ -72,17 +72,20 @@ const NoteState = (props) => {
         const json = await response.json();
         console.log(json);
 
-        for (let i = 0; i < notes.length; i++) {    // iteratively searching through notes to find the note to be edited
-            let element = notes[i];
+        let newNotes = JSON.parse(JSON.stringify(notes));  // deep copy of notes state
+
+        for (let i = 0; i < newNotes.length; i++) {    // iteratively searching through notes to find the note to be edited
+            let element = newNotes[i];
             if (element._id === id) {
                 element.title = title;
                 element.description = description;
                 element.tag = tag;
+                newNotes[i] = element;
                 break;
             }
-            setNotes([...notes]);  // updating the state with the edited notef
         }
-
+        console.log(newNotes);
+        setNotes(newNotes);  // updating the state with the edited note
     }
 
     const [notes, setNotes] = useState(notesInitial);
