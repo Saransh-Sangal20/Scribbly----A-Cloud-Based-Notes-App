@@ -73,13 +73,14 @@ const NoteState = (props) => {
         console.log(json);
 
         for (let i = 0; i < notes.length; i++) {    // iteratively searching through notes to find the note to be edited
-            const element = notes[i];
+            let element = notes[i];
             if (element._id === id) {
                 element.title = title;
                 element.description = description;
                 element.tag = tag;
                 break;
             }
+            setNotes([...notes]);  // updating the state with the edited notef
         }
 
     }
