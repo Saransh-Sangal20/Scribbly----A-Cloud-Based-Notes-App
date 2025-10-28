@@ -70,6 +70,7 @@ export default function Notes() {
             </div>
             <div className='row my-3'>
                 <h2>Your Notes</h2>
+                {notes.length===0 && <p>No Notes Available</p>}  {/* conditional rendering to show message when there are no notes */}
                 {notes.map((note) => {
                     return <NoteItem key={note._id} updatenote={updatenote} note={note} />
                 })}
