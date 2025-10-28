@@ -13,7 +13,7 @@ router.get('/fetchAllNotes', fetchUser, async (req, res) => {
     }
     catch (error) {
         console.log(error.message);
-        res.status(500).send("Some error occured");
+        res.status(500).json({ error: "Some error occured" });
     }
 })
 
@@ -35,11 +35,11 @@ router.post('/addnote', fetchUser, [
         }
         catch (error) {
             console.log(error.message);
-            res.status(500).send("Some error occured");
+            res.status(500).json({ error: "Some error occured" });
         }
     }
     else {
-        res.send({ errors: result.array() })  // if errors, return errors
+        res.json({ errors: result.array() })  // if errors, return errors
     }
 })
 
@@ -92,7 +92,7 @@ router.delete('/deletenote/:id', fetchUser, async (req, res) => {
     }
     catch (error) {
         console.log(error.message);
-        res.status(500).send("Some error occured");
+        res.status(500).json({ error: "Some error occured" });
     }
 })
 
