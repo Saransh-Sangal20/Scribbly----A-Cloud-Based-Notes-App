@@ -15,6 +15,7 @@ router.post('/createuser', [  // data validation array
     body('name', 'Enter a valid name').isLength({ min: 3 }),
     body('password', 'Enter a valid password').isLength({ min: 5 })
 ], async (req, res) => {
+    let success = false;
     // checking errors here
     const result = validationResult(req);
     if (result.isEmpty()) {  // if no errors
@@ -22,7 +23,7 @@ router.post('/createuser', [  // data validation array
             // finding existing user with same email
             let user = await User.findOne({ email: req.body.email })
             if (user) {
-                return res.status(400).json({ error: "Sorry user with this email already exists" })
+                return res.status(400).json({ success, error: "Sorry user with this email already exists" })
             }
             const salt = await bcrypt.genSalt(10);  // generated salt for password
             let secPass = await bcrypt.hash(req.body.password, salt);  // generated hashcode for password and merged salt with it
@@ -38,7 +39,8 @@ router.post('/createuser', [  // data validation array
                 }
             };
             const authToken = jwt.sign(data, JWT_SECRET);
-            res.json({ authToken });  // sends only json data
+            success = true;
+            res.json({ success, authToken });  // sends only json data
 
             // res.send(user);  // sends all type of data
         }
@@ -48,7 +50,8 @@ router.post('/createuser', [  // data validation array
         }
     }
     else {
-        res.send({ errors: result.array() })  // if errors, return errors
+        success = false;
+        res.send({ success, errors: result.array() })  // if errors, return errors
     }
 })
 
@@ -57,6 +60,7 @@ router.post('/login', [  // data validation array
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be empty').exists()
 ], async (req, res) => {
+    let success = false;
     // checking errors here
     const result = validationResult(req);
     if (result.isEmpty()) {  // if no errors
@@ -64,12 +68,14 @@ router.post('/login', [  // data validation array
         try {
             let user = await User.findOne({ email });  // find existing user
             if (!user) {
-                return res.status(400).json({ error: "Please login with correct credentials" });  // when user not found
+                success = false;
+                return res.status(400).json({ success, error: "Please login with correct credentials" });  // when user not found
             }
             else {
                 const passwordCompare = await bcrypt.compare(password, user.password);  // if user found then compare stored password with entered password
                 if (!passwordCompare) {
-                    return res.status(400).json({ error: "Please login with correct credentials" });  // if password comparison fails return error
+                    success = false
+                    return res.status(400).json({ success, error: "Please login with correct credentials" });  // if password comparison fails return error
                 }
                 else {  // if password matches succesfully, send json web token
                     const data = {
@@ -77,8 +83,9 @@ router.post('/login', [  // data validation array
                             id: user.id
                         }
                     };
+                    success = true;
                     const authToken = jwt.sign(data, JWT_SECRET);
-                    res.json({ authToken });
+                    res.json({ success, authToken });
                 }
             }
         }

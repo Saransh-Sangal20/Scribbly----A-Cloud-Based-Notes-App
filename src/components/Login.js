@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [credentials, setcredentials] = useState({email: "", password: ""});
+  let navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();  // prevent page from reloading on form submit
@@ -15,15 +17,24 @@ export default function Login() {
     })
     const json = await response.json();
     console.log(json);
+    if (json.success) {
+      // Save the auth token and redirect
+      localStorage.setItem("token", json.authToken);
+      navigate("/");
+    }
+    else {
+      alert("Invalid credentials");
+    }
     setcredentials({email: "", password: ""}); // Clear the form after submission
   }
   const handleChange = (e) => {
         setcredentials({...credentials, [e.target.name]: e.target.value});
-    }
+  }
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={handleLogin}>
         <div className="mb-3 my-3">
+          <h2>Welcome back!</h2>
           <label htmlFor="email" className="form-label">Email address</label>
           <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={handleChange} aria-describedby="emailHelp" />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
