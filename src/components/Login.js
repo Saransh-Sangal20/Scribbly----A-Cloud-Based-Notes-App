@@ -15,6 +15,7 @@ export default function Login() {
     })
     const json = await response.json();
     console.log(json);
+    setcredentials({email: "", password: ""}); // Clear the form after submission
   }
   const handleChange = (e) => {
         setcredentials({...credentials, [e.target.name]: e.target.value});
@@ -22,7 +23,7 @@ export default function Login() {
   return (
     <div>
       <form onSubmit={handleLogin}>
-        <div className="mb-3">
+        <div className="mb-3 my-3">
           <label htmlFor="email" className="form-label">Email address</label>
           <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={handleChange} aria-describedby="emailHelp" />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
