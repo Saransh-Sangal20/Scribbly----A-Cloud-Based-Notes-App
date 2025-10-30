@@ -36,12 +36,12 @@ export default function Login() {
         <div className="mb-3 my-3">
           <h2>Welcome back!</h2>
           <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={handleChange} aria-describedby="emailHelp" />
+          <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={handleChange} aria-describedby="emailHelp" required/>
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={handleChange} />
+          <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={handleChange} required minLength={5}/>
         </div>
         <div className="mb-3 form-check">
           <input type="checkbox" className="form-check-input" id="exampleCheck1" />
