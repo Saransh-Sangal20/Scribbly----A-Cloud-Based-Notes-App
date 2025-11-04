@@ -1,7 +1,8 @@
 // here we connect to our mongodb database
 
 const mongoose = require("mongoose");
-const mongoURI = "mongodb://localhost:27017/scribbly"
+require('dotenv').config();
+const mongoURI = process.env.MONGO_URI;
 
 function connectToMongo() {
     mongoose.connect(mongoURI)
