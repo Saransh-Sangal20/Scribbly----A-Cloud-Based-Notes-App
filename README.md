@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# 📝 Scribbly – Your Personal Notebook App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Scribbly** is a full-stack **MERN (MongoDB, Express, React, Node.js)** web application designed to help users securely **create, edit, and manage personal notes** with authentication.  
+It’s built for simplicity, privacy, and accessibility — allowing users to log in from any device, manage their notes efficiently, and keep them safe inside their own **MongoDB database**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌟 Project Overview
 
-### `npm start`
+Scribbly is your personal digital notebook, offering a seamless and intuitive note-taking experience.  
+It’s not just another CRUD app — it’s a secure, token-based system that ensures **every user only sees their own notes**.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+From user authentication to note management, the entire system is built with **clean architecture** and **best MERN practices**:
+- The **frontend** is responsive, modern, and built using React + Bootstrap.
+- The **backend** is powered by Node.js and Express with JWT authentication.
+- The **database** uses MongoDB for fast and flexible storage.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🔐 **User Authentication** – Signup and login with JWT-based authentication.
+- 🧠 **CRUD Notes Management** – Add, edit, delete, and view your personal notes.
+- 💾 **MongoDB Database** – All notes are stored and retrieved securely from your MongoDB instance.
+- ⚡ **Responsive Frontend** – Clean UI designed with React and Bootstrap for all devices.
+- 🔒 **Protected Routes** – Prevents unauthorized access without a valid JWT token.
+- 💬 **Alert Notifications** – Instant feedback on every user action (like “Note added” or “Invalid credentials”).
+- 🔁 **State Management** – Context API used for global note state sharing across components.
+- 🧭 **Smooth Navigation** – React Router ensures seamless page transitions between login, signup, and dashboard.
+- ☁️ **Deployed for Free** – Hosted using free-tier services (Render + Netlify).
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧩 Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Layer | Technology Used | Description |
+|-------|------------------|-------------|
+| **Frontend** | React.js, Bootstrap | For a dynamic, responsive user interface |
+| **Backend** | Node.js, Express.js | REST API handling user authentication and note operations |
+| **Database** | MongoDB | Stores user and note data |
+| **Authentication** | JWT (JSON Web Token) | Secures user routes and protects private data |
+| **Deployment** | Netlify (Frontend), Render (Backend) | Free hosting services for seamless deployment |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🧰 Installation & Setup (Run Locally)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Follow these steps to set up and run Scribbly on your local system:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1️⃣ Clone the Repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git clone https://github.com/yourusername/scribbly.git
+cd scribbly
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Install backend dependencies
+cd backend
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Install frontend dependencies
+cd ../frontend
+npm install
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Install Dependencies
 
-### Analyzing the Bundle Size
+# Install backend dependencies
+cd backend
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Install frontend dependencies
+cd ../frontend
+npm install
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Set Up Environment Variables
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Run the Application
 
-### Deployment
+# Start backend server
+cd backend
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Start frontend server
+cd frontend
+npm start
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
