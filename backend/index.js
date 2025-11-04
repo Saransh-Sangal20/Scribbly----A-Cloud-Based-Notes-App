@@ -2,6 +2,7 @@
 const connectToMongo = require('./db');
 const express = require('express')
 var cors = require('cors')
+require('dotenv').config({ path: './backend/.env' });  // this change has been made because .env is in backend folder and not in root folder
 
 connectToMongo();
 
