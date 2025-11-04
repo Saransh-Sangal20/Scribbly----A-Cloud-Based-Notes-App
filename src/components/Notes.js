@@ -4,7 +4,7 @@ import noteContext from '../context/notes/noteContext';
 import NoteItem from './NoteItem';
 import AddNote from './AddNote';
 
-export default function Notes() {
+export default function Notes(props) {
     const context = useContext(noteContext);
     const { notes, getNotes, editNote } = context;
     const [note, setnote] = useState({id: "", etitle: "", edescription: "", etag: ""});  // initially each field of each note is empty
@@ -26,6 +26,7 @@ export default function Notes() {
         console.log(note);
         editNote(note.id, note.etitle, note.edescription, note.etag);
         refClose.current.click();  // programmatically clicking the close button to close the modal
+        props.showalert("Note updated successfully", "success");  // show success alert
     }
 
     const handleChange = (e) => {
@@ -34,7 +35,7 @@ export default function Notes() {
 
     return (
         <>
-            <AddNote />
+            <AddNote showalert={props.showalert}/>
             <button type="button" ref={refbtn} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
@@ -72,7 +73,7 @@ export default function Notes() {
                 <h2>Your Notes</h2>
                 {notes.length===0 && <p>No Notes Available</p>}  {/* conditional rendering to show message when there are no notes */}
                 {notes.map((note) => {
-                    return <NoteItem key={note._id} updatenote={updatenote} note={note} />
+                    return <NoteItem key={note._id} updatenote={updatenote} note={note} showalert={props.showalert} />
                 })}
             </div>
         </>

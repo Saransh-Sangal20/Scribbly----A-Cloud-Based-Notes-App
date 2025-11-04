@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext, useState} from 'react';
 import noteContext from '../context/notes/noteContext';
 
-export default function AddNote() {
+export default function AddNote(props) {
     const context = useContext(noteContext);
     const {addNote} = context;
     const [note, setnote] = useState({title: "", description: "", tag: ""});  // initially each field of each note is empty
@@ -10,6 +10,7 @@ export default function AddNote() {
     const handleAddNote = (e) => {
         e.preventDefault();  // to prevent the default behaviour of form submission which reloads the page
         addNote(note.title, note.description, note.tag);
+        props.showalert("Note added successfully", "success");  // show success alert
         setnote({title: "", description: "", tag: ""});  // clear the form after adding the note
     }
 

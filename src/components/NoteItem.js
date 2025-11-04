@@ -6,6 +6,7 @@ export default function NoteItem(props) {
     const {deleteNote} = context
     const handleDeleteNote = (id) => {
         deleteNote(id);
+        props.showalert("Note deleted successfully", "success");  // show success alert
     }
     return (
         <div className='col-md-3 my-3'>
