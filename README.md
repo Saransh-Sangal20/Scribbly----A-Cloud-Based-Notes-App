@@ -50,8 +50,6 @@ Follow these steps to set up and run Scribbly on your local system:
 ---
 
 ### 1️⃣ Clone the Repository
-
-```bash
 git clone https://github.com/yourusername/scribbly.git
 cd scribbly
 
@@ -95,4 +93,4 @@ npm start
 cd frontend
 npm start
 
----
+```bash
