@@ -49,48 +49,64 @@ Follow these steps to set up and run Scribbly on your local system:
 
 ---
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
+```bash ...
 git clone https://github.com/yourusername/scribbly.git
 cd scribbly
+```
 
 ---
 
 ### Install backend dependencies
+```bash ...
 cd backend
 npm install
+```
 
 ### Install frontend dependencies
+```bash ...
 cd ../frontend
 npm install
+```
 
 ---
 
 ### Install Dependencies
 
 # Install backend dependencies
+```bash ...
 cd backend
 npm install
+```
 
 # Install frontend dependencies
+```bash ...
 cd ../frontend
 npm install
+```
 
 ---
 
 ### Set Up Environment Variables
+```bash ...
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
+```
 
 ---
 
 ### Run the Application
 
 # Start backend server
+```bash ...
 cd backend
 npm start
+```
 
 # Start frontend server
+```bash ...
 cd frontend
 npm start
+```
 
-```bash
+---
