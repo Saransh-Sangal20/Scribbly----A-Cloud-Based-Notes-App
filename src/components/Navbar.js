@@ -1,12 +1,20 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar(props) {
+let navigate = useNavigate();
+
   let location = useLocation()
   useEffect(() => {
     console.log(location.pathname);
   }, [location]);  // used to actively highlight the current page in navbar
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+    props.showalert("Logged out successfully", "success");
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -23,10 +31,10 @@ export default function Navbar() {
               <Link className={`nav-link ${location.pathname==='/about'? 'active': ''}`} to="/about">About</Link>
             </li>
           </ul>
-          <form className="d-flex">
+          {!localStorage.getItem("token")?<form className="d-flex">
             <Link className="btn btn-primary mx-3" to="/login" role="button">Login</Link>
             <Link className="btn btn-primary" to="/signup" role="button">Signup</Link>
-          </form>
+          </form>: <button className='btn btn-primary' onClick={handleLogout}>Logout</button>}
         </div>
       </div>
     </nav>

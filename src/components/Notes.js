@@ -3,14 +3,21 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import noteContext from '../context/notes/noteContext';
 import NoteItem from './NoteItem';
 import AddNote from './AddNote';
+import { useNavigate } from 'react-router-dom';
 
 export default function Notes(props) {
     const context = useContext(noteContext);
     const { notes, getNotes, editNote } = context;
     const [note, setnote] = useState({id: "", etitle: "", edescription: "", etag: ""});  // initially each field of each note is empty
+    let navigate = useNavigate();
 
     useEffect(() => {
-        getNotes();
+        if (localStorage.getItem("token")) {  // if user is logged in, then there exists a token, so fetch notes
+            getNotes();
+        }
+        else {
+            navigate("/login");  // redirect to login page if user is not logged in
+        }
         // eslint-disable-next-line
     }, [])
 
