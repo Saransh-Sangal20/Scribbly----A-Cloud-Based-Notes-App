@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login(props) {
   const [credentials, setcredentials] = useState({email: "", password: ""});
   let navigate = useNavigate();
 
@@ -21,9 +21,10 @@ export default function Login() {
       // Save the auth token and redirect
       localStorage.setItem("token", json.authToken);
       navigate("/");
+      props.showalert("Logged in successfully", "success"); // show success alert
     }
     else {
-      alert("Invalid credentials");
+      props.showalert("Invalid credentials", "danger"); // show error alert
     }
     setcredentials({email: "", password: ""}); // Clear the form after submission
   }
