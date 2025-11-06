@@ -8,7 +8,7 @@ export default function Signup(props) {
 
   const handleSignup = async (e) => {
     e.preventDefault();  // prevent page from reloading on form submit
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch("https://scribbly-backend-bwyp.onrender.com/api/auth/createuser", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",

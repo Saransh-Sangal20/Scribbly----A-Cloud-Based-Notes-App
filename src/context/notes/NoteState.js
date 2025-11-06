@@ -2,7 +2,7 @@ import { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
-    const host = "http://localhost:5000";
+    const host = "https://scribbly-backend-bwyp.onrender.com";
     const notesInitial = [];  // state variable noteInitial
 
     // get notes function
